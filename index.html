@@ -457,7 +457,7 @@ function toLocalDT(ms) {
 }
 
 function onRangeChange() {
-  const r = document.getElementById('fRange').value;
+  const r = (document.getElementById('fRange').value || '').toUpperCase().trim();
   document.getElementById('fRangeTarget').value = RANGE_TARGET[r] || '';
   document.getElementById('fTargetHour').value = RANGE_HOUR[r] != null ? RANGE_HOUR[r] : '';
   calcTargetDate();
@@ -482,19 +482,26 @@ function onStatusChange() {
 
 function calcTargetDate() {
   const a = document.getElementById('fAssigned').value;
-  const r = document.getElementById('fRange').value;
+  const r = (document.getElementById('fRange').value || '').toUpperCase().trim();
   const h = RANGE_HOUR[r];
   document.getElementById('fTarget').value = (a && h) ? toLocalDT(new Date(a).getTime() + h * 3600000) : '';
+}
+
+function getTargetHour() {
+  // Try RANGE_HOUR lookup first (normalized uppercase)
+  const rangeVal = (document.getElementById('fRange').value || '').toUpperCase().trim();
+  const hFromRange = RANGE_HOUR[rangeVal];
+  if (hFromRange != null) return hFromRange;
+  // Fallback: parse the fTargetHour field directly (value saved from Sheets)
+  const raw = document.getElementById('fTargetHour').value;
+  const parsed = parseFloat(raw);
+  return (!isNaN(parsed) && parsed > 0) ? parsed : null;
 }
 
 function autoCalc() {
   const a = document.getElementById('fAssigned').value;
   const ac = document.getElementById('fActual').value;
-  // Use RANGE_HOUR mapping first, fallback to fTargetHour field (useful when editing)
-  const rangeVal = document.getElementById('fRange').value;
-  const hFromRange = RANGE_HOUR[rangeVal];
-  const hFromField = parseFloat(document.getElementById('fTargetHour').value);
-  const h = hFromRange != null ? hFromRange : (!isNaN(hFromField) ? hFromField : null);
+  const h = getTargetHour();
   let dur = '', score = '';
   if (a && ac) {
     const d = (new Date(ac) - new Date(a)) / 3600000;
@@ -526,14 +533,12 @@ async function saveTicket() {
   const range = document.getElementById('fRange').value;
   const assigned = document.getElementById('fAssigned').value;
   const actual = document.getElementById('fActual').value;
-  // Use RANGE_HOUR mapping first, fallback to fTargetHour field
-  const hFromRange = RANGE_HOUR[range];
-  const hFromField = parseFloat(document.getElementById('fTargetHour').value);
-  const tHour = hFromRange != null ? hFromRange : (!isNaN(hFromField) ? hFromField : '');
+  // Use same getTargetHour() helper for consistency
+  const tHour = getTargetHour();
   let dur = '', score = '';
   if (assigned && actual) {
     const d = (new Date(actual) - new Date(assigned)) / 3600000;
-    if (d > 0) { dur = +d.toFixed(2); if (tHour !== '') score = Math.min(100, Math.round(Number(tHour) / d * 100)) + '%'; }
+    if (d > 0) { dur = +d.toFixed(2); if (tHour != null) score = Math.min(100, Math.round(tHour / d * 100)) + '%'; }
   }
 
   const no = editId || nextNo();
