@@ -386,28 +386,29 @@ async function loadTickets() {
   try {
     const r = await apiFetch('getAll');
     if (r.status === 'ok') {
+      const clean = v => (v !== null && v !== undefined) ? String(v).trim() : '';
       tickets = r.data.map(row => ({
-        id: String(row['No']),
-        no: row['No'],
-        dateIn: row['Date and Time IN'],
-        bu: row['Business Unit'],
-        user: row['User'],
-        taskName: row['Task Name'],
-        taskDesc: row['Task Description'],
-        kat: row['Category'],
-        priority: row['Priority'],
-        rangeCode: row['Range Code'],
-        rangeTarget: row['Range Target'],
-        pic: row['PIC Assigned'],
-        assignedDate: row['Assigned Date and Time'],
-        startDate: row['Start Date and Time'],
-        targetDate: row['Target Date and Time'],
-        actualDate: row['Actual Finish Date and Time'],
-        duration: row['Duration (Hour)'],
-        targetHour: row['Target (Hour)'],
-        score: row['Score (%)'],
-        resolution: row['Resolution Description'],
-        status: row['Status']
+        id: clean(row['No']),
+        no: clean(row['No']),
+        dateIn: clean(row['Date and Time IN']),
+        bu: clean(row['Business Unit']),
+        user: clean(row['User']),
+        taskName: clean(row['Task Name']),
+        taskDesc: clean(row['Task Description']),
+        kat: clean(row['Category']),
+        priority: clean(row['Priority']),
+        rangeCode: clean(row['Range Code']),
+        rangeTarget: clean(row['Range Target']),
+        pic: clean(row['PIC Assigned']),
+        assignedDate: clean(row['Assigned Date and Time']),
+        startDate: clean(row['Start Date and Time']),
+        targetDate: clean(row['Target Date and Time']),
+        actualDate: clean(row['Actual Finish Date and Time']),
+        duration: clean(row['Duration (Hour)']),
+        targetHour: clean(row['Target (Hour)']),
+        score: clean(row['Score (%)']),
+        resolution: clean(row['Resolution Description']),
+        status: clean(row['Status'])
       }));
       setConn('ok');
       renderTable();
@@ -469,12 +470,13 @@ function onStatusChange() {
   const st = document.getElementById('fStatus').value;
   if (st === 'DONE' || st === 'CLOSE') {
     const actual = document.getElementById('fActual');
+    // Always set to now if empty, but user can still edit manually
     if (!actual.value) {
       actual.value = toLocalDT(Date.now());
-      actual.style.borderColor = 'var(--green)';
-      autoCalc();
-      setTimeout(() => { actual.style.borderColor = ''; }, 2000);
     }
+    actual.style.borderColor = 'var(--green)';
+    autoCalc();
+    setTimeout(() => { actual.style.borderColor = ''; }, 2500);
   }
 }
 
@@ -488,11 +490,18 @@ function calcTargetDate() {
 function autoCalc() {
   const a = document.getElementById('fAssigned').value;
   const ac = document.getElementById('fActual').value;
-  const h = RANGE_HOUR[document.getElementById('fRange').value];
+  // Use RANGE_HOUR mapping first, fallback to fTargetHour field (useful when editing)
+  const rangeVal = document.getElementById('fRange').value;
+  const hFromRange = RANGE_HOUR[rangeVal];
+  const hFromField = parseFloat(document.getElementById('fTargetHour').value);
+  const h = hFromRange != null ? hFromRange : (!isNaN(hFromField) ? hFromField : null);
   let dur = '', score = '';
   if (a && ac) {
     const d = (new Date(ac) - new Date(a)) / 3600000;
-    if (d > 0) { dur = +d.toFixed(2); if (h != null) score = Math.min(100, Math.round(h / d * 100)) + '%'; }
+    if (d > 0) {
+      dur = +d.toFixed(2);
+      if (h != null) score = Math.min(100, Math.round(h / d * 100)) + '%';
+    }
   }
   document.getElementById('fDuration').value = dur;
   document.getElementById('fScore').value = score;
@@ -517,11 +526,14 @@ async function saveTicket() {
   const range = document.getElementById('fRange').value;
   const assigned = document.getElementById('fAssigned').value;
   const actual = document.getElementById('fActual').value;
-  const tHour = RANGE_HOUR[range] != null ? RANGE_HOUR[range] : '';
+  // Use RANGE_HOUR mapping first, fallback to fTargetHour field
+  const hFromRange = RANGE_HOUR[range];
+  const hFromField = parseFloat(document.getElementById('fTargetHour').value);
+  const tHour = hFromRange != null ? hFromRange : (!isNaN(hFromField) ? hFromField : '');
   let dur = '', score = '';
   if (assigned && actual) {
     const d = (new Date(actual) - new Date(assigned)) / 3600000;
-    if (d > 0) { dur = +d.toFixed(2); if (tHour !== '') score = Math.min(100, Math.round(tHour / d * 100)) + '%'; }
+    if (d > 0) { dur = +d.toFixed(2); if (tHour !== '') score = Math.min(100, Math.round(Number(tHour) / d * 100)) + '%'; }
   }
 
   const no = editId || nextNo();
