@@ -287,7 +287,7 @@ textarea{height:70px;resize:vertical}
             </div>
             <div class="form-group">
               <label>Status</label>
-              <select id="fStatus"><option value="">-- Pilih --</option><option>OPEN</option><option>CLOSE</option><option>PAUSE</option><option>REASSIGN</option><option>DONE</option></select>
+              <select id="fStatus" onchange="onStatusChange()"><option value="">-- Pilih --</option><option>OPEN</option><option>CLOSE</option><option>PAUSE</option><option>REASSIGN</option><option>DONE</option></select>
             </div>
           </div>
 
@@ -465,6 +465,19 @@ function onRangeChange() {
 
 function onAssignedChange() { calcTargetDate(); autoCalc(); }
 
+function onStatusChange() {
+  const st = document.getElementById('fStatus').value;
+  if (st === 'DONE' || st === 'CLOSE') {
+    const actual = document.getElementById('fActual');
+    if (!actual.value) {
+      actual.value = toLocalDT(Date.now());
+      actual.style.borderColor = 'var(--green)';
+      autoCalc();
+      setTimeout(() => { actual.style.borderColor = ''; }, 2000);
+    }
+  }
+}
+
 function calcTargetDate() {
   const a = document.getElementById('fAssigned').value;
   const r = document.getElementById('fRange').value;
@@ -561,16 +574,41 @@ function resetForm() {
 
 function cancelForm() { resetForm(); sw('tiket'); }
 
+function toInputDT(v) {
+  // Convert any date string from Sheets to datetime-local format (YYYY-MM-DDTHH:MM)
+  if (!v) return '';
+  try {
+    const d = new Date(v);
+    if (isNaN(d)) return '';
+    const pad = n => String(n).padStart(2,'0');
+    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  } catch { return ''; }
+}
+
 function editTicket(id) {
   const t = tickets.find(x => String(x.no) === String(id)); if (!t) return;
   editId = t.no;
   const set = (fid, val) => { const el = document.getElementById(fid); if (el) el.value = val != null ? val : ''; };
-  set('fNo', t.no); set('fDateIn', t.dateIn); set('fBU', t.bu); set('fUser', t.user);
-  set('fTaskName', t.taskName); set('fTaskDesc', t.taskDesc); set('fKat', t.kat);
-  set('fPrio', t.priority); set('fRange', t.rangeCode); set('fRangeTarget', t.rangeTarget);
-  set('fTargetHour', t.targetHour); set('fPIC', t.pic); set('fAssigned', t.assignedDate);
-  set('fStart', t.startDate); set('fTarget', t.targetDate); set('fActual', t.actualDate);
-  set('fDuration', t.duration); set('fScore', t.score); set('fResolution', t.resolution);
+  const setDT = (fid, val) => { const el = document.getElementById(fid); if (el) el.value = toInputDT(val); };
+  set('fNo', t.no);
+  setDT('fDateIn', t.dateIn);
+  set('fBU', t.bu);
+  set('fUser', t.user);
+  set('fTaskName', t.taskName);
+  set('fTaskDesc', t.taskDesc);
+  set('fKat', t.kat);
+  set('fPrio', t.priority);
+  set('fRange', t.rangeCode);
+  set('fRangeTarget', t.rangeTarget);
+  set('fTargetHour', t.targetHour);
+  set('fPIC', t.pic);
+  setDT('fAssigned', t.assignedDate);
+  setDT('fStart', t.startDate);
+  setDT('fTarget', t.targetDate);
+  setDT('fActual', t.actualDate);
+  set('fDuration', t.duration);
+  set('fScore', t.score);
+  set('fResolution', t.resolution);
   set('fStatus', t.status);
   sw('form');
 }
@@ -719,7 +757,31 @@ function renderDash() {
 
 // ===== EXPORT =====
 const HEADERS = ['No','Date and Time IN','Business Unit','User','Task Name','Task Description','Category','Priority','Range Code','Range Target','PIC Assigned','Assigned Date and Time','Start Date and Time','Target Date and Time','Actual Finish Date and Time','Duration (Hour)','Target (Hour)','Score (%)','Resolution Description','Status'];
-const getRow = t => [t.no,t.dateIn,t.bu,t.user,t.taskName,t.taskDesc,t.kat,t.priority,t.rangeCode,t.rangeTarget,t.pic,t.assignedDate,t.startDate,t.targetDate,t.actualDate,t.duration,t.targetHour,t.score,t.resolution,t.status];
+
+function getRow(t) {
+  return [
+    t.no || '',
+    t.dateIn || '',
+    t.bu || '',
+    t.user || '',
+    t.taskName || '',
+    t.taskDesc || '',
+    t.kat || '',
+    t.priority || '',
+    t.rangeCode || '',
+    t.rangeTarget || '',
+    t.pic || '',
+    t.assignedDate || '',
+    t.startDate || '',
+    t.targetDate || '',
+    t.actualDate || '',
+    t.duration || '',
+    t.targetHour || '',
+    t.score || '',
+    t.resolution || '',
+    t.status || ''
+  ];
+}
 
 function exportCSV() {
   if (!tickets.length) { toast('Tidak ada data!','err'); return; }
