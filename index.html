@@ -7,32 +7,20 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --bg:#0f1117;
-  --bg2:#161b27;
-  --bg3:#1e2535;
-  --border:#2a3348;
-  --border2:#354060;
-  --accent:#3b82f6;
-  --accent2:#60a5fa;
-  --green:#22c55e;
-  --yellow:#f59e0b;
-  --red:#ef4444;
-  --orange:#f97316;
-  --text:#e2e8f0;
-  --text2:#94a3b8;
-  --text3:#64748b;
-  --mono:'IBM Plex Mono',monospace;
-  --sans:'IBM Plex Sans',sans-serif;
+  --bg:#0f1117;--bg2:#161b27;--bg3:#1e2535;
+  --border:#2a3348;--border2:#354060;
+  --accent:#3b82f6;--accent2:#60a5fa;
+  --green:#22c55e;--yellow:#f59e0b;--red:#ef4444;--orange:#f97316;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;font-size:14px}
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:var(--bg2)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-
-/* LAYOUT */
 .layout{display:flex;min-height:100vh}
-.sidebar{width:220px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:0;flex-shrink:0}
+.sidebar{width:220px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
 .sidebar-logo{padding:20px 20px 16px;border-bottom:1px solid var(--border)}
 .logo-tag{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
 .logo-title{font-size:16px;font-weight:600;color:var(--text);line-height:1.2}
@@ -44,22 +32,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .nav-item svg{width:15px;height:15px;flex-shrink:0}
 .sidebar-footer{padding:16px 20px;border-top:1px solid var(--border)}
 .version{font-family:var(--mono);font-size:10px;color:var(--text3)}
-
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
 .topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .topbar-title{font-family:var(--mono);font-size:12px;color:var(--text2);letter-spacing:1px}
 .topbar-right{display:flex;align-items:center;gap:12px}
-.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--yellow);box-shadow:0 0 6px var(--yellow)}
 .status-text{font-family:var(--mono);font-size:10px;color:var(--text3)}
-
 .content{flex:1;overflow-y:auto;padding:24px}
 .page{display:none}.page.active{display:block}
-
-/* CARDS */
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px}
 .card-title{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;margin-bottom:16px}
-
-/* METRICS */
 .metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
 .metric{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;position:relative;overflow:hidden}
 .metric::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
@@ -70,12 +52,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .metric-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
 .metric-val{font-family:var(--mono);font-size:28px;font-weight:500;color:var(--text);line-height:1}
 .metric-sub{font-size:11px;color:var(--text3);margin-top:4px}
-
-/* CHARTS */
 .charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 .chart-wrap{position:relative;height:200px}
-
-/* TABLE */
 .filter-bar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
 .filter-bar input,.filter-bar select{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:5px;padding:6px 10px;font-size:12px;font-family:var(--sans);outline:none;transition:border .15s}
 .filter-bar input:focus,.filter-bar select:focus{border-color:var(--accent)}
@@ -90,15 +68,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .btn-danger:hover{background:#3f1f1f}
 .btn-sm{padding:4px 10px;font-size:11px}
 .tbl-wrap{overflow-x:auto;border-radius:6px;border:1px solid var(--border)}
-table{width:100%;border-collapse:collapse;min-width:1400px}
+table{width:100%;border-collapse:collapse;min-width:1500px}
 thead tr{background:var(--bg3)}
 th{padding:9px 12px;font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.8px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;font-weight:400}
 td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text2);font-size:12px;white-space:nowrap;vertical-align:middle}
 tr:last-child td{border-bottom:none}
 tbody tr:hover td{background:rgba(255,255,255,.02);color:var(--text)}
 .td-clip{max-width:140px;overflow:hidden;text-overflow:ellipsis;display:block}
-
-/* BADGES */
 .badge{display:inline-block;padding:2px 8px;border-radius:3px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.5px}
 .badge-open{background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.3)}
 .badge-close,.badge-done{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.25)}
@@ -107,8 +83,6 @@ tbody tr:hover td{background:rgba(255,255,255,.02);color:var(--text)}
 .badge-high{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.25)}
 .badge-medium{background:rgba(245,158,11,.12);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
 .badge-low{background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25)}
-
-/* FORM */
 .form-section{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:6px;margin:20px 0 14px}
 .form-section:first-child{margin-top:0}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -121,8 +95,6 @@ textarea{height:70px;resize:vertical}
 .auto-field{opacity:.6;cursor:not-allowed}
 .hint{font-size:10px;color:var(--text3);margin-top:3px;font-family:var(--mono)}
 .form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-
-/* MODAL */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
 .modal-bg.open{display:flex}
 .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:24px;width:780px;max-width:95vw;max-height:88vh;overflow-y:auto}
@@ -134,14 +106,10 @@ textarea{height:70px;resize:vertical}
 .detail-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
 .detail-item .dl{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
 .detail-item .dv{font-size:12px;color:var(--text);font-weight:500}
-
-/* LOADING */
 .loading{display:flex;align-items:center;gap:10px;padding:40px;justify-content:center;color:var(--text3);font-family:var(--mono);font-size:12px}
 .spinner{width:18px;height:18px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
 .empty{text-align:center;padding:48px;color:var(--text3);font-family:var(--mono);font-size:12px}
-
-/* TOAST */
 .toast{position:fixed;bottom:20px;right:20px;background:var(--bg3);border:1px solid var(--border2);color:var(--text);padding:10px 16px;border-radius:6px;font-size:12px;z-index:999;font-family:var(--mono);display:none;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,.4)}
 .toast.show{display:flex}
 .toast.ok{border-left:3px solid var(--green)}
@@ -149,9 +117,7 @@ textarea{height:70px;resize:vertical}
 </style>
 </head>
 <body>
-
 <div class="layout">
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="logo-tag">IT Support</div>
@@ -160,24 +126,20 @@ textarea{height:70px;resize:vertical}
     <nav class="sidebar-nav">
       <div class="nav-label">Menu</div>
       <div class="nav-item active" onclick="sw('dashboard')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        Dashboard
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Dashboard
       </div>
       <div class="nav-item" onclick="sw('tiket')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
-        Daftar Tiket
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>Daftar Tiket
       </div>
       <div class="nav-item" onclick="sw('form');newTicket()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
-        Tiket Baru
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Tiket Baru
       </div>
     </nav>
     <div class="sidebar-footer">
-      <div class="version">v1.0.0 · Google Sheets</div>
+      <div class="version">v2.0.0 · Supabase PostgreSQL</div>
     </div>
   </aside>
 
-  <!-- MAIN -->
   <div class="main">
     <div class="topbar">
       <div class="topbar-title" id="topbar-title">DASHBOARD</div>
@@ -186,7 +148,6 @@ textarea{height:70px;resize:vertical}
         <div class="status-text" id="conn-text">CONNECTING...</div>
       </div>
     </div>
-
     <div class="content">
 
       <!-- DASHBOARD -->
@@ -196,10 +157,7 @@ textarea{height:70px;resize:vertical}
           <div class="card"><div class="card-title">Status Tiket</div><div class="chart-wrap"><canvas id="cStatus"></canvas></div></div>
           <div class="card"><div class="card-title">Per Kategori</div><div class="chart-wrap"><canvas id="cKat"></canvas></div></div>
         </div>
-        <div class="card">
-          <div class="card-title">Tiket per Bulan</div>
-          <div class="chart-wrap" style="height:160px"><canvas id="cBulan"></canvas></div>
-        </div>
+        <div class="card"><div class="card-title">Tiket per Bulan</div><div class="chart-wrap" style="height:160px"><canvas id="cBulan"></canvas></div></div>
         <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
           <button class="btn btn-ghost" onclick="exportCSV()">↓ Export CSV</button>
           <button class="btn btn-ghost" onclick="exportXLS()">↓ Export Excel</button>
@@ -225,8 +183,8 @@ textarea{height:70px;resize:vertical}
             </tr></thead>
             <tbody id="tbody"></tbody>
           </table>
-          <div id="tbl-loading" class="loading"><div class="spinner"></div> Memuat data...</div>
-          <div id="tbl-empty" class="empty" style="display:none">— Tidak ada data —</div>
+          <div id="tbl-loading" class="loading"><div class="spinner"></div> Memuat data dari Supabase...</div>
+          <div id="tbl-empty" class="empty" style="display:none">— Belum ada tiket —</div>
         </div>
       </div>
 
@@ -235,101 +193,49 @@ textarea{height:70px;resize:vertical}
         <div class="card">
           <div class="form-section">Informasi Dasar</div>
           <div class="grid3">
-            <div class="form-group">
-              <label>No Tiket</label>
-              <input type="text" id="fNo" readonly class="auto-field" placeholder="Auto"/>
-            </div>
-            <div class="form-group">
-              <label>Date & Time IN *</label>
-              <input type="datetime-local" id="fDateIn"/>
-            </div>
-            <div class="form-group">
-              <label>Business Unit *</label>
+            <div class="form-group"><label>No Tiket</label><input type="text" id="fNo" readonly class="auto-field" placeholder="Auto"/></div>
+            <div class="form-group"><label>Date & Time IN *</label><input type="datetime-local" id="fDateIn"/></div>
+            <div class="form-group"><label>Business Unit *</label>
               <select id="fBU"><option value="">-- Pilih --</option><option>AND</option><option>LYN</option><option>MAV</option><option>MBS</option><option>MST</option><option>OPI</option><option>PAL</option></select>
             </div>
-            <div class="form-group">
-              <label>User / Pemohon *</label>
-              <input type="text" id="fUser" placeholder="Nama user"/>
-            </div>
-            <div class="form-group" style="grid-column:span 2">
-              <label>Task Name *</label>
-              <input type="text" id="fTaskName" placeholder="Judul task"/>
-            </div>
+            <div class="form-group"><label>User / Pemohon *</label><input type="text" id="fUser" placeholder="Nama user"/></div>
+            <div class="form-group" style="grid-column:span 2"><label>Task Name *</label><input type="text" id="fTaskName" placeholder="Judul task"/></div>
           </div>
-          <div class="form-group">
-            <label>Task Description</label>
-            <textarea id="fTaskDesc" placeholder="Deskripsi masalah..."></textarea>
-          </div>
+          <div class="form-group"><label>Task Description</label><textarea id="fTaskDesc" placeholder="Deskripsi masalah..."></textarea></div>
 
           <div class="form-section">Klasifikasi</div>
           <div class="grid3">
-            <div class="form-group">
-              <label>Category</label>
+            <div class="form-group"><label>Category</label>
               <select id="fKat"><option value="">-- Pilih --</option><option>HARDWARE</option><option>NETWORK</option><option>INTERNET</option><option>ORACLE</option><option>ODOO</option><option>HARMONI</option><option>DEVELOPMENT</option><option>WEBSITE COMPRO</option><option>SPIDER</option><option>EXCELLENT</option><option>SIMFONI</option><option>OSTicket</option></select>
             </div>
-            <div class="form-group">
-              <label>Priority</label>
+            <div class="form-group"><label>Priority</label>
               <select id="fPrio"><option value="">-- Pilih --</option><option>HIGH</option><option>MEDIUM</option><option>LOW</option></select>
             </div>
-            <div class="form-group">
-              <label>Range Code</label>
+            <div class="form-group"><label>Range Code</label>
               <select id="fRange" onchange="onRangeChange()"><option value="">-- Pilih --</option><option>RANGE 1</option><option>RANGE 2</option><option>RANGE 3</option><option>RANGE 4</option><option>RANGE 5</option></select>
             </div>
-            <div class="form-group">
-              <label>Range Target</label>
-              <input type="text" id="fRangeTarget" readonly class="auto-field"/>
-              <div class="hint">↑ otomatis dari Range Code</div>
-            </div>
-            <div class="form-group">
-              <label>Target (Hour)</label>
-              <input type="text" id="fTargetHour" readonly class="auto-field"/>
-              <div class="hint">↑ otomatis dari Range Code</div>
-            </div>
-            <div class="form-group">
-              <label>Status</label>
+            <div class="form-group"><label>Range Target</label><input type="text" id="fRangeTarget" readonly class="auto-field"/><div class="hint">↑ otomatis dari Range Code</div></div>
+            <div class="form-group"><label>Target (Hour)</label><input type="text" id="fTargetHour" readonly class="auto-field"/><div class="hint">↑ otomatis dari Range Code</div></div>
+            <div class="form-group"><label>Status</label>
               <select id="fStatus" onchange="onStatusChange()"><option value="">-- Pilih --</option><option>OPEN</option><option>CLOSE</option><option>PAUSE</option><option>REASSIGN</option><option>DONE</option></select>
             </div>
           </div>
 
           <div class="form-section">Penugasan & Waktu</div>
           <div class="grid3">
-            <div class="form-group">
-              <label>PIC Assigned</label>
+            <div class="form-group"><label>PIC Assigned</label>
               <select id="fPIC"><option value="">-- Pilih --</option><option>TEGUH</option><option>ANG LINIA</option><option>BONG SUSANTO</option><option>CHRISTIANTO</option><option>FAJAR</option><option>IMMANUEL</option><option>M RAIS</option><option>SANDI</option><option>SENDHY</option><option>SIUTARNO</option><option>SMIRNA</option><option>SUWITO</option><option>VERNANDANI</option><option>WILLY</option><option>WILLIAM</option></select>
             </div>
-            <div class="form-group">
-              <label>Assigned Date & Time</label>
-              <input type="datetime-local" id="fAssigned" oninput="onAssignedChange()"/>
-            </div>
-            <div class="form-group">
-              <label>Start Date & Time</label>
-              <input type="datetime-local" id="fStart"/>
-            </div>
-            <div class="form-group">
-              <label>Target Date & Time</label>
-              <input type="datetime-local" id="fTarget" class="auto-field"/>
-              <div class="hint">↑ otomatis: Assigned + Target Hour</div>
-            </div>
-            <div class="form-group">
-              <label>Actual Finish Date & Time</label>
-              <input type="datetime-local" id="fActual" oninput="autoCalc()"/>
-            </div>
-            <div class="form-group">
-              <label>Duration (Hour)</label>
-              <input type="text" id="fDuration" readonly class="auto-field"/>
-              <div class="hint">↑ Assigned → Actual Finish</div>
-            </div>
-            <div class="form-group" style="grid-column:span 3">
-              <label>Score (%)</label>
-              <input type="text" id="fScore" readonly class="auto-field"/>
-              <div class="hint">↑ Target Hour ÷ Duration × 100</div>
-            </div>
+            <div class="form-group"><label>Assigned Date & Time</label><input type="datetime-local" id="fAssigned" oninput="onAssignedChange()"/></div>
+            <div class="form-group"><label>Start Date & Time</label><input type="datetime-local" id="fStart"/></div>
+            <div class="form-group"><label>Target Date & Time</label><input type="datetime-local" id="fTarget" class="auto-field"/><div class="hint">↑ Assigned + Target Hour</div></div>
+            <div class="form-group"><label>Actual Finish Date & Time</label><input type="datetime-local" id="fActual" oninput="autoCalc()"/></div>
+            <div class="form-group"><label>Duration (Hour)</label><input type="text" id="fDuration" readonly class="auto-field"/><div class="hint">↑ Assigned → Actual Finish</div></div>
+            <div class="form-group" style="grid-column:span 3"><label>Score (%)</label><input type="text" id="fScore" readonly class="auto-field"/><div class="hint">↑ Target Hour ÷ Duration × 100</div></div>
           </div>
 
           <div class="form-section">Resolusi</div>
-          <div class="form-group">
-            <textarea id="fResolution" placeholder="Deskripsi penyelesaian / solusi tiket..." style="height:90px"></textarea>
-          </div>
+          <div class="form-group"><textarea id="fResolution" placeholder="Deskripsi penyelesaian / solusi tiket..." style="height:90px"></textarea></div>
 
           <div class="form-actions">
             <button class="btn btn-ghost" onclick="cancelForm()">Batal</button>
@@ -346,22 +252,22 @@ textarea{height:70px;resize:vertical}
 <div class="modal-bg" id="modalBg">
   <div class="modal">
     <div class="modal-hd">
-      <div>
-        <div class="modal-hd-title" id="modalTitle">Detail Tiket</div>
-        <div class="modal-hd-sub" id="modalSub"></div>
-      </div>
+      <div><div class="modal-hd-title" id="modalTitle">Detail Tiket</div><div class="modal-hd-sub" id="modalSub"></div></div>
       <button class="close-btn" onclick="closeModal()">×</button>
     </div>
     <div id="modalBody"></div>
   </div>
 </div>
-
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-const API = 'https://script.google.com/macros/s/AKfycbxPE8zxVQyo4HvDQDVd2JMWkxseSmXpWg0X5ZH5XygshFTkZMgvAmqndtdj2PVyKYIe/exec';
+// ===== SUPABASE CONFIG =====
+const SB_URL = 'https://xnxjjmefxjputuhkxbbo.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhueGpqbWVmeGpwdXR1aGt4YmJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMTc4MTIsImV4cCI6MjA5NTU5MzgxMn0.CnMwvU3hh4jFpNd45sdmxWMc2hiJbgLuxJdkGN5QDAo';
+const HEADERS = { 'Content-Type': 'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Prefer': 'return=representation' };
+const TABLE = SB_URL + '/rest/v1/tiket';
+
 const MONTHS = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des'];
 const RANGE_TARGET = {'RANGE 1':'15 MENIT - 2 JAM','RANGE 2':'2 - 4 JAM','RANGE 3':'4 - 8 JAM','RANGE 4':'8 - 16 JAM','RANGE 5':'> 16 JAM'};
 const RANGE_HOUR = {'RANGE 1':2,'RANGE 2':4,'RANGE 3':8,'RANGE 4':16,'RANGE 5':null};
@@ -370,56 +276,61 @@ let tickets = [];
 let editId = null;
 let cS, cK, cB;
 
-// ===== API =====
-async function apiFetch(action, body={}) {
-  const url = API + '?action=' + action;
-  const opts = action === 'getAll'
-    ? { method: 'GET' }
-    : { method: 'POST', body: JSON.stringify({ action, ...body }) };
-  const res = await fetch(url, opts);
-  return res.json();
+// ===== SUPABASE API =====
+async function sbGet() {
+  const r = await fetch(TABLE + '?order=no.asc', { headers: HEADERS });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function sbInsert(data) {
+  const r = await fetch(TABLE, { method: 'POST', headers: HEADERS, body: JSON.stringify(data) });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function sbUpdate(no, data) {
+  const r = await fetch(TABLE + '?no=eq.' + no, { method: 'PATCH', headers: HEADERS, body: JSON.stringify(data) });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function sbDelete(no) {
+  const r = await fetch(TABLE + '?no=eq.' + no, { method: 'DELETE', headers: HEADERS });
+  if (!r.ok) throw new Error(await r.text());
 }
 
 async function loadTickets() {
   setConn('loading');
   showTblLoading(true);
   try {
-    const r = await apiFetch('getAll');
-    if (r.status === 'ok') {
-      const clean = v => (v !== null && v !== undefined) ? String(v).trim() : '';
-      tickets = r.data.map(row => ({
-        id: clean(row['No']),
-        no: clean(row['No']),
-        dateIn: clean(row['Date and Time IN']),
-        bu: clean(row['Business Unit']),
-        user: clean(row['User']),
-        taskName: clean(row['Task Name']),
-        taskDesc: clean(row['Task Description']),
-        kat: clean(row['Category']),
-        priority: clean(row['Priority']),
-        rangeCode: clean(row['Range Code']),
-        rangeTarget: clean(row['Range Target']),
-        pic: clean(row['PIC Assigned']),
-        assignedDate: clean(row['Assigned Date and Time']),
-        startDate: clean(row['Start Date and Time']),
-        targetDate: clean(row['Target Date and Time']),
-        actualDate: clean(row['Actual Finish Date and Time']),
-        duration: clean(row['Duration (Hour)']),
-        targetHour: clean(row['Target (Hour)']),
-        score: clean(row['Score (%)']),
-        resolution: clean(row['Resolution Description']),
-        status: clean(row['Status'])
-      }));
-      setConn('ok');
-      renderTable();
-      if (document.getElementById('page-dashboard').classList.contains('active')) renderDash();
-    } else {
-      setConn('err');
-      toast('Gagal memuat data: ' + r.message, 'err');
-    }
+    const data = await sbGet();
+    tickets = data.map(row => ({
+      id: row.id,
+      no: row.no,
+      dateIn: row.date_in || '',
+      bu: row.business_unit || '',
+      user: row.username || '',
+      taskName: row.task_name || '',
+      taskDesc: row.task_desc || '',
+      kat: row.category || '',
+      priority: row.priority || '',
+      rangeCode: row.range_code || '',
+      rangeTarget: row.range_target || '',
+      pic: row.pic_assigned || '',
+      assignedDate: row.assigned_date || '',
+      startDate: row.start_date || '',
+      targetDate: row.target_date || '',
+      actualDate: row.actual_date || '',
+      duration: row.duration_hour || '',
+      targetHour: row.target_hour || '',
+      score: row.score || '',
+      resolution: row.resolution || '',
+      status: row.status || ''
+    }));
+    setConn('ok');
+    renderTable();
+    if (document.getElementById('page-dashboard').classList.contains('active')) renderDash();
   } catch(e) {
     setConn('err');
-    toast('Koneksi gagal. Cek URL API.', 'err');
+    toast('Gagal koneksi ke Supabase: ' + e.message, 'err');
   }
   showTblLoading(false);
 }
@@ -427,77 +338,64 @@ async function loadTickets() {
 function setConn(s) {
   const dot = document.getElementById('conn-dot');
   const txt = document.getElementById('conn-text');
-  if (s === 'ok') { dot.style.background = '#22c55e'; dot.style.boxShadow = '0 0 6px #22c55e'; txt.textContent = 'CONNECTED'; }
-  else if (s === 'err') { dot.style.background = '#ef4444'; dot.style.boxShadow = '0 0 6px #ef4444'; txt.textContent = 'ERROR'; }
-  else { dot.style.background = '#f59e0b'; dot.style.boxShadow = '0 0 6px #f59e0b'; txt.textContent = 'SYNCING...'; }
+  const cfg = { ok:['#22c55e','CONNECTED'], err:['#ef4444','ERROR'], loading:['#f59e0b','SYNCING...'] }[s];
+  dot.style.background = cfg[0]; dot.style.boxShadow = '0 0 6px ' + cfg[0]; txt.textContent = cfg[1];
 }
-
 function showTblLoading(v) {
   document.getElementById('tbl-loading').style.display = v ? 'flex' : 'none';
   if (v) document.getElementById('tbody').innerHTML = '';
 }
 
 // ===== NAV =====
-const PAGE_TITLES = { dashboard: 'DASHBOARD', tiket: 'DAFTAR TIKET', form: 'FORM TIKET' };
 function sw(p) {
   document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active'));
   document.getElementById('page-' + p).classList.add('active');
   document.querySelectorAll('.nav-item')[{dashboard:0,tiket:1,form:2}[p]].classList.add('active');
-  document.getElementById('topbar-title').textContent = PAGE_TITLES[p];
+  document.getElementById('topbar-title').textContent = {dashboard:'DASHBOARD',tiket:'DAFTAR TIKET',form:'FORM TIKET'}[p];
   if (p === 'dashboard') renderDash();
   if (p === 'tiket') renderTable();
 }
 
 // ===== FORM LOGIC =====
 function toLocalDT(ms) {
-  const d = new Date(ms);
-  const pad = n => String(n).padStart(2,'0');
+  const d = new Date(ms), pad = n => String(n).padStart(2,'0');
   return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
-
+function toInputDT(v) {
+  if (!v) return '';
+  try { const d = new Date(v); if (isNaN(d)) return ''; return toLocalDT(d.getTime()); } catch { return ''; }
+}
+function getTargetHour() {
+  const r = (document.getElementById('fRange').value || '').toUpperCase().trim();
+  const h = RANGE_HOUR[r];
+  if (h != null) return h;
+  const raw = parseFloat(document.getElementById('fTargetHour').value);
+  return (!isNaN(raw) && raw > 0) ? raw : null;
+}
 function onRangeChange() {
   const r = (document.getElementById('fRange').value || '').toUpperCase().trim();
   document.getElementById('fRangeTarget').value = RANGE_TARGET[r] || '';
   document.getElementById('fTargetHour').value = RANGE_HOUR[r] != null ? RANGE_HOUR[r] : '';
-  calcTargetDate();
-  autoCalc();
+  calcTargetDate(); autoCalc();
 }
-
 function onAssignedChange() { calcTargetDate(); autoCalc(); }
-
-function onStatusChange() {
-  const st = document.getElementById('fStatus').value;
-  if (st === 'DONE' || st === 'CLOSE') {
-    const actual = document.getElementById('fActual');
-    // Always set to now if empty, but user can still edit manually
-    if (!actual.value) {
-      actual.value = toLocalDT(Date.now());
-    }
-    actual.style.borderColor = 'var(--green)';
-    autoCalc();
-    setTimeout(() => { actual.style.borderColor = ''; }, 2500);
-  }
-}
-
 function calcTargetDate() {
   const a = document.getElementById('fAssigned').value;
   const r = (document.getElementById('fRange').value || '').toUpperCase().trim();
   const h = RANGE_HOUR[r];
   document.getElementById('fTarget').value = (a && h) ? toLocalDT(new Date(a).getTime() + h * 3600000) : '';
 }
-
-function getTargetHour() {
-  // Try RANGE_HOUR lookup first (normalized uppercase)
-  const rangeVal = (document.getElementById('fRange').value || '').toUpperCase().trim();
-  const hFromRange = RANGE_HOUR[rangeVal];
-  if (hFromRange != null) return hFromRange;
-  // Fallback: parse the fTargetHour field directly (value saved from Sheets)
-  const raw = document.getElementById('fTargetHour').value;
-  const parsed = parseFloat(raw);
-  return (!isNaN(parsed) && parsed > 0) ? parsed : null;
+function onStatusChange() {
+  const st = document.getElementById('fStatus').value;
+  if (st === 'DONE' || st === 'CLOSE') {
+    const el = document.getElementById('fActual');
+    if (!el.value) { el.value = toLocalDT(Date.now()); }
+    el.style.borderColor = 'var(--green)';
+    autoCalc();
+    setTimeout(() => { el.style.borderColor = ''; }, 2500);
+  }
 }
-
 function autoCalc() {
   const a = document.getElementById('fAssigned').value;
   const ac = document.getElementById('fActual').value;
@@ -505,147 +403,104 @@ function autoCalc() {
   let dur = '', score = '';
   if (a && ac) {
     const d = (new Date(ac) - new Date(a)) / 3600000;
-    if (d > 0) {
-      dur = +d.toFixed(2);
-      if (h != null) score = Math.min(100, Math.round(h / d * 100)) + '%';
-    }
+    if (d > 0) { dur = +d.toFixed(2); if (h != null) score = Math.min(100, Math.round(h / d * 100)) + '%'; }
   }
   document.getElementById('fDuration').value = dur;
   document.getElementById('fScore').value = score;
 }
-
 function nextNo() { return tickets.length ? Math.max(...tickets.map(t => Number(t.no) || 0)) + 1 : 1; }
-
-function newTicket() {
-  resetForm();
-  document.getElementById('form-lbl') && (document.getElementById('fNo').value = 'Auto #' + nextNo());
-}
+function newTicket() { resetForm(); document.getElementById('fNo').value = 'Auto #' + nextNo(); }
 
 async function saveTicket() {
   const dateIn = document.getElementById('fDateIn').value;
   const user = document.getElementById('fUser').value.trim();
   const taskName = document.getElementById('fTaskName').value.trim();
   if (!dateIn || !user || !taskName) { toast('Date & Time IN, User, dan Task Name wajib diisi!', 'err'); return; }
-
   const btn = document.getElementById('save-btn');
   btn.disabled = true; btn.textContent = 'Menyimpan...';
-
-  const range = document.getElementById('fRange').value;
   const assigned = document.getElementById('fAssigned').value;
   const actual = document.getElementById('fActual').value;
-  // Use same getTargetHour() helper for consistency
-  const tHour = getTargetHour();
-  let dur = '', score = '';
+  const h = getTargetHour();
+  let dur = null, score = '';
   if (assigned && actual) {
     const d = (new Date(actual) - new Date(assigned)) / 3600000;
-    if (d > 0) { dur = +d.toFixed(2); if (tHour != null) score = Math.min(100, Math.round(tHour / d * 100)) + '%'; }
+    if (d > 0) { dur = +d.toFixed(2); if (h != null) score = Math.min(100, Math.round(h / d * 100)) + '%'; }
   }
-
-  const no = editId || nextNo();
-  const row = {
-    'No': no,
-    'Date and Time IN': dateIn,
-    'Business Unit': document.getElementById('fBU').value,
-    'User': user,
-    'Task Name': taskName,
-    'Task Description': document.getElementById('fTaskDesc').value,
-    'Category': document.getElementById('fKat').value,
-    'Priority': document.getElementById('fPrio').value,
-    'Range Code': range,
-    'Range Target': RANGE_TARGET[range] || '',
-    'PIC Assigned': document.getElementById('fPIC').value,
-    'Assigned Date and Time': assigned,
-    'Start Date and Time': document.getElementById('fStart').value,
-    'Target Date and Time': document.getElementById('fTarget').value,
-    'Actual Finish Date and Time': actual,
-    'Duration (Hour)': dur,
-    'Target (Hour)': tHour,
-    'Score (%)': score,
-    'Resolution Description': document.getElementById('fResolution').value,
-    'Status': document.getElementById('fStatus').value || 'OPEN'
+  const range = (document.getElementById('fRange').value || '').toUpperCase().trim();
+  const payload = {
+    no: editId || nextNo(),
+    date_in: dateIn || null,
+    business_unit: document.getElementById('fBU').value || null,
+    username: user,
+    task_name: taskName,
+    task_desc: document.getElementById('fTaskDesc').value || null,
+    category: document.getElementById('fKat').value || null,
+    priority: document.getElementById('fPrio').value || null,
+    range_code: range || null,
+    range_target: RANGE_TARGET[range] || null,
+    pic_assigned: document.getElementById('fPIC').value || null,
+    assigned_date: assigned || null,
+    start_date: document.getElementById('fStart').value || null,
+    target_date: document.getElementById('fTarget').value || null,
+    actual_date: actual || null,
+    duration_hour: dur ? String(dur) : null,
+    target_hour: h != null ? String(h) : null,
+    score: score || null,
+    resolution: document.getElementById('fResolution').value || null,
+    status: document.getElementById('fStatus').value || 'OPEN'
   };
-
   try {
-    const action = editId ? 'update' : 'create';
-    const r = await apiFetch(action, { data: row });
-    if (r.status === 'ok') {
-      toast(editId ? 'Tiket berhasil diupdate!' : 'Tiket berhasil disimpan!', 'ok');
-      resetForm(); await loadTickets(); sw('tiket');
-    } else {
-      toast('Gagal: ' + r.message, 'err');
-    }
+    if (editId) { await sbUpdate(editId, payload); toast('Tiket berhasil diupdate! ✓', 'ok'); }
+    else { await sbInsert(payload); toast('Tiket berhasil disimpan! ✓', 'ok'); }
+    resetForm(); await loadTickets(); sw('tiket');
   } catch(e) {
-    toast('Koneksi gagal.', 'err');
+    toast('Gagal menyimpan: ' + e.message, 'err');
   }
   btn.disabled = false; btn.textContent = 'Simpan Tiket';
 }
 
 function resetForm() {
-  ['fDateIn','fBU','fUser','fTaskName','fTaskDesc','fKat','fPrio','fRange','fRangeTarget','fTargetHour',
-   'fPIC','fAssigned','fStart','fTarget','fActual','fDuration','fScore','fResolution','fStatus'].forEach(id => {
+  ['fDateIn','fBU','fUser','fTaskName','fTaskDesc','fKat','fPrio','fRange','fRangeTarget',
+   'fTargetHour','fPIC','fAssigned','fStart','fTarget','fActual','fDuration','fScore','fResolution','fStatus'].forEach(id => {
     const el = document.getElementById(id); if (el) el.value = '';
   });
   document.getElementById('fNo').value = '';
   editId = null;
 }
-
 function cancelForm() { resetForm(); sw('tiket'); }
 
-function toInputDT(v) {
-  // Convert any date string from Sheets to datetime-local format (YYYY-MM-DDTHH:MM)
-  if (!v) return '';
-  try {
-    const d = new Date(v);
-    if (isNaN(d)) return '';
-    const pad = n => String(n).padStart(2,'0');
-    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-  } catch { return ''; }
-}
-
-function editTicket(id) {
-  const t = tickets.find(x => String(x.no) === String(id)); if (!t) return;
+function editTicket(no) {
+  const t = tickets.find(x => String(x.no) === String(no)); if (!t) return;
   editId = t.no;
-  const set = (fid, val) => { const el = document.getElementById(fid); if (el) el.value = val != null ? val : ''; };
-  const setDT = (fid, val) => { const el = document.getElementById(fid); if (el) el.value = toInputDT(val); };
-  set('fNo', t.no);
-  setDT('fDateIn', t.dateIn);
-  set('fBU', t.bu);
-  set('fUser', t.user);
-  set('fTaskName', t.taskName);
-  set('fTaskDesc', t.taskDesc);
-  set('fKat', t.kat);
-  set('fPrio', t.priority);
-  set('fRange', t.rangeCode);
-  set('fRangeTarget', t.rangeTarget);
-  set('fTargetHour', t.targetHour);
-  set('fPIC', t.pic);
-  setDT('fAssigned', t.assignedDate);
-  setDT('fStart', t.startDate);
-  setDT('fTarget', t.targetDate);
-  setDT('fActual', t.actualDate);
-  set('fDuration', t.duration);
-  set('fScore', t.score);
-  set('fResolution', t.resolution);
-  set('fStatus', t.status);
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v != null ? v : ''; };
+  const setDT = (id, v) => { const el = document.getElementById(id); if (el) el.value = toInputDT(v); };
+  set('fNo', t.no); setDT('fDateIn', t.dateIn); set('fBU', t.bu); set('fUser', t.user);
+  set('fTaskName', t.taskName); set('fTaskDesc', t.taskDesc); set('fKat', t.kat);
+  set('fPrio', t.priority); set('fRange', t.rangeCode); set('fRangeTarget', t.rangeTarget);
+  set('fTargetHour', t.targetHour); set('fPIC', t.pic);
+  setDT('fAssigned', t.assignedDate); setDT('fStart', t.startDate);
+  setDT('fTarget', t.targetDate); setDT('fActual', t.actualDate);
+  set('fDuration', t.duration); set('fScore', t.score);
+  set('fResolution', t.resolution); set('fStatus', t.status);
   sw('form');
 }
 
-async function deleteTicket(id) {
-  if (!confirm('Yakin hapus tiket ini?')) return;
+async function deleteTicket(no) {
+  if (!confirm('Yakin hapus tiket #' + no + '?')) return;
   try {
-    const r = await apiFetch('delete', { id: String(id) });
-    if (r.status === 'ok') { toast('Tiket dihapus.', 'ok'); await loadTickets(); }
-    else toast('Gagal hapus: ' + r.message, 'err');
-  } catch(e) { toast('Koneksi gagal.', 'err'); }
+    await sbDelete(no);
+    toast('Tiket #' + no + ' dihapus.', 'ok');
+    await loadTickets();
+  } catch(e) { toast('Gagal hapus: ' + e.message, 'err'); }
 }
 
 // ===== TABLE =====
 function fdt(v) {
   if (!v) return '-';
-  try { const d = new Date(v); return d.toLocaleDateString('id-ID',{day:'2-digit',month:'2-digit',year:'numeric'}) + ' ' + d.toTimeString().slice(0,5); }
-  catch { return v; }
+  try { const d = new Date(v); return d.toLocaleDateString('id-ID',{day:'2-digit',month:'2-digit',year:'numeric'}) + ' ' + d.toTimeString().slice(0,5); } catch { return v; }
 }
 function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function scoreColor(s) { if(!s)return'var(--text3)'; const v=parseInt(s); return v>=80?'#4ade80':v>=50?'#fbbf24':'#f87171'; }
 
 function getFiltered() {
   const s = (document.getElementById('fs')?.value||'').toLowerCase();
@@ -664,7 +519,6 @@ function getFiltered() {
     return true;
   });
 }
-
 function clearF() { ['fs','fst','fpr','fbu','fkat','fbln'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';}); renderTable(); }
 
 function renderTable() {
@@ -688,61 +542,40 @@ function renderTable() {
       <td><span style="font-family:var(--mono);color:${scoreColor(t.score)}">${t.score||'-'}</span></td>
       <td><span class="td-clip" title="${esc(t.resolution)}">${esc(t.resolution)||'-'}</span></td>
       <td><span class="badge badge-${(t.status||'').toLowerCase()}">${t.status||'-'}</span></td>
-      <td>
-        <div style="display:flex;gap:4px">
-          <button class="btn btn-ghost btn-sm" onclick="viewTicket('${t.no}')">&#128065;</button>
-          <button class="btn btn-ghost btn-sm" onclick="editTicket('${t.no}')">&#9998;</button>
-          <button class="btn btn-danger" onclick="deleteTicket('${t.no}')">&#128465;</button>
-        </div>
-      </td>
+      <td><div style="display:flex;gap:4px">
+        <button class="btn btn-ghost btn-sm" onclick="viewTicket('${t.no}')" title="Detail">&#128065;</button>
+        <button class="btn btn-ghost btn-sm" onclick="editTicket('${t.no}')" title="Edit">&#9998;</button>
+        <button class="btn btn-danger" onclick="deleteTicket('${t.no}')" title="Hapus">&#128465;</button>
+      </div></td>
     </tr>`).join('');
 }
 
-function scoreColor(s) {
-  if (!s) return 'var(--text3)';
-  const v = parseInt(s);
-  if (v >= 80) return '#4ade80';
-  if (v >= 50) return '#fbbf24';
-  return '#f87171';
-}
-
-function viewTicket(id) {
-  const t = tickets.find(x => String(x.no) === String(id)); if (!t) return;
+function viewTicket(no) {
+  const t = tickets.find(x => String(x.no) === String(no)); if (!t) return;
   document.getElementById('modalTitle').textContent = 'Tiket #' + t.no + ' — ' + t.taskName;
-  document.getElementById('modalSub').textContent = t.bu + ' · ' + t.user + ' · ' + fdt(t.dateIn);
+  document.getElementById('modalSub').textContent = (t.bu||'-') + ' · ' + (t.user||'-') + ' · ' + fdt(t.dateIn);
   const row = (l,v) => `<div class="detail-item"><div class="dl">${l}</div><div class="dv">${v||'-'}</div></div>`;
   const badge = (v,c) => v ? `<span class="badge badge-${c}">${v}</span>` : '-';
   document.getElementById('modalBody').innerHTML = `
     <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border)">
       <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.5px;margin-bottom:8px">INFORMASI DASAR</div>
-      <div class="detail-grid">
-        ${row('Business Unit', t.bu)} ${row('User', t.user)} ${row('Date & Time IN', fdt(t.dateIn))}
-      </div>
-      <div style="margin-top:8px"><div class="dl" style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.8px;margin-bottom:4px">TASK NAME</div><div style="font-size:13px;color:var(--text);font-weight:500">${esc(t.taskName)}</div></div>
-      <div style="margin-top:8px"><div class="dl" style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.8px;margin-bottom:4px">TASK DESCRIPTION</div><div style="font-size:12px;color:var(--text2);line-height:1.6;white-space:pre-wrap">${esc(t.taskDesc)||'-'}</div></div>
+      <div class="detail-grid">${row('BU',t.bu)}${row('User',t.user)}${row('Date & Time IN',fdt(t.dateIn))}</div>
+      <div style="margin-top:8px"><div class="dl" style="font-family:var(--mono);font-size:9px;color:var(--text3);margin-bottom:4px">TASK NAME</div><div style="font-size:13px;color:var(--text);font-weight:500">${esc(t.taskName)}</div></div>
+      <div style="margin-top:8px"><div class="dl" style="font-family:var(--mono);font-size:9px;color:var(--text3);margin-bottom:4px">TASK DESCRIPTION</div><div style="font-size:12px;color:var(--text2);line-height:1.6;white-space:pre-wrap">${esc(t.taskDesc)||'-'}</div></div>
     </div>
     <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border)">
       <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.5px;margin-bottom:8px">KLASIFIKASI</div>
-      <div class="detail-grid">
-        ${row('Category', t.kat)} ${row('Priority', badge(t.priority,(t.priority||'').toLowerCase()))} ${row('Status', badge(t.status,(t.status||'').toLowerCase()))}
-        ${row('Range Code', t.rangeCode)} ${row('Range Target', t.rangeTarget)} ${row('Target (Hour)', t.targetHour)}
-      </div>
+      <div class="detail-grid">${row('Category',t.kat)}${row('Priority',badge(t.priority,(t.priority||'').toLowerCase()))}${row('Status',badge(t.status,(t.status||'').toLowerCase()))}${row('Range Code',t.rangeCode)}${row('Range Target',t.rangeTarget)}${row('Target (Hour)',t.targetHour)}</div>
     </div>
     <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border)">
       <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.5px;margin-bottom:8px">PENUGASAN & WAKTU</div>
-      <div class="detail-grid">
-        ${row('PIC Assigned', t.pic)} ${row('Assigned Date & Time', fdt(t.assignedDate))} ${row('Start Date & Time', fdt(t.startDate))}
-        ${row('Target Date & Time', fdt(t.targetDate))} ${row('Actual Finish', fdt(t.actualDate))} ${row('Duration (Hour)', t.duration)}
-        ${row('Score (%)', '<span style="color:'+scoreColor(t.score)+';font-family:var(--mono)">'+(t.score||'-')+'</span>')}
-      </div>
+      <div class="detail-grid">${row('PIC Assigned',t.pic)}${row('Assigned',fdt(t.assignedDate))}${row('Start',fdt(t.startDate))}${row('Target',fdt(t.targetDate))}${row('Actual Finish',fdt(t.actualDate))}${row('Duration (H)',t.duration)}${row('Score (%)', '<span style="color:'+scoreColor(t.score)+';font-family:var(--mono)">'+(t.score||'-')+'</span>')}</div>
     </div>
-    <div>
-      <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.5px;margin-bottom:8px">RESOLUTION DESCRIPTION</div>
+    <div><div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.5px;margin-bottom:8px">RESOLUTION</div>
       <div style="font-size:12px;color:var(--text2);line-height:1.6;white-space:pre-wrap">${esc(t.resolution)||'-'}</div>
     </div>`;
   document.getElementById('modalBg').classList.add('open');
 }
-
 function closeModal() { document.getElementById('modalBg').classList.remove('open'); }
 
 // ===== DASHBOARD =====
@@ -757,14 +590,12 @@ function renderDash() {
     <div class="metric blue"><div class="metric-label">Open</div><div class="metric-val" style="color:#60a5fa">${open}</div><div class="metric-sub">menunggu</div></div>
     <div class="metric green"><div class="metric-label">Selesai</div><div class="metric-val" style="color:#4ade80">${done}</div><div class="metric-sub">done / close</div></div>
     <div class="metric yellow"><div class="metric-label">Avg Score</div><div class="metric-val" style="color:${scoreColor(avg+'%')}">${avg}%</div><div class="metric-sub">rata-rata</div></div>`;
-
   const statuses = ['OPEN','CLOSE','PAUSE','REASSIGN','DONE'];
   const sCnt = statuses.map(s=>tickets.filter(t=>t.status===s).length);
   const cats = {}; tickets.forEach(t=>{if(t.kat)cats[t.kat]=(cats[t.kat]||0)+1;});
   const cL = Object.keys(cats).slice(0,10), cV = cL.map(k=>cats[k]);
   const mCnt = new Array(12).fill(0);
   tickets.forEach(t=>{if(t.dateIn){const m=new Date(t.dateIn).getMonth();if(m>=0&&m<12)mCnt[m]++;}});
-
   if(cS)cS.destroy(); if(cK)cK.destroy(); if(cB)cB.destroy();
   const co = {responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10,font:{size:10}}}}};
   cS = new Chart(document.getElementById('cStatus'),{type:'doughnut',data:{labels:statuses,datasets:[{data:sCnt,backgroundColor:['#3b82f6','#22c55e','#f59e0b','#f97316','#06b6d4'],borderWidth:0,hoverOffset:4}]},options:{...co,cutout:'65%'}});
@@ -773,52 +604,27 @@ function renderDash() {
 }
 
 // ===== EXPORT =====
-const HEADERS = ['No','Date and Time IN','Business Unit','User','Task Name','Task Description','Category','Priority','Range Code','Range Target','PIC Assigned','Assigned Date and Time','Start Date and Time','Target Date and Time','Actual Finish Date and Time','Duration (Hour)','Target (Hour)','Score (%)','Resolution Description','Status'];
-
-function getRow(t) {
-  return [
-    t.no || '',
-    t.dateIn || '',
-    t.bu || '',
-    t.user || '',
-    t.taskName || '',
-    t.taskDesc || '',
-    t.kat || '',
-    t.priority || '',
-    t.rangeCode || '',
-    t.rangeTarget || '',
-    t.pic || '',
-    t.assignedDate || '',
-    t.startDate || '',
-    t.targetDate || '',
-    t.actualDate || '',
-    t.duration || '',
-    t.targetHour || '',
-    t.score || '',
-    t.resolution || '',
-    t.status || ''
-  ];
-}
-
+const EXP_HEADERS = ['No','Date and Time IN','Business Unit','User','Task Name','Task Description','Category','Priority','Range Code','Range Target','PIC Assigned','Assigned Date and Time','Start Date and Time','Target Date and Time','Actual Finish Date and Time','Duration (Hour)','Target (Hour)','Score (%)','Resolution Description','Status'];
+function getRow(t) { return [t.no,t.dateIn,t.bu,t.user,t.taskName,t.taskDesc,t.kat,t.priority,t.rangeCode,t.rangeTarget,t.pic,t.assignedDate,t.startDate,t.targetDate,t.actualDate,t.duration,t.targetHour,t.score,t.resolution,t.status]; }
 function exportCSV() {
   if (!tickets.length) { toast('Tidak ada data!','err'); return; }
-  const csv = [HEADERS.join(','), ...tickets.map(t=>getRow(t).map(v=>`"${(v||'').toString().replace(/"/g,'""')}"`).join(','))].join('\n');
+  const csv = [EXP_HEADERS.join(','), ...tickets.map(t=>getRow(t).map(v=>`"${(v||'').toString().replace(/"/g,'""')}"`).join(','))].join('\n');
   dl(new Blob([csv],{type:'text/csv'}), 'tiket_IT_'+today()+'.csv');
 }
 function exportXLS() {
   if (!tickets.length) { toast('Tidak ada data!','err'); return; }
-  let html = '<table border="1"><tr>'+HEADERS.map(h=>'<th>'+h+'</th>').join('')+'</tr>';
+  let html = '<table border="1"><tr>'+EXP_HEADERS.map(h=>'<th>'+h+'</th>').join('')+'</tr>';
   tickets.forEach(t=>{html+='<tr>'+getRow(t).map(v=>'<td>'+(v||'')+'</td>').join('')+'</tr>';});
-  dl(new Blob([html+='</table>'],{type:'application/vnd.ms-excel'}), 'tiket_IT_'+today()+'.xls');
+  dl(new Blob([html+'</table>'],{type:'application/vnd.ms-excel'}), 'tiket_IT_'+today()+'.xls');
 }
-function dl(blob, name) { const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click(); }
+function dl(blob,name) { const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click(); }
 function today() { return new Date().toISOString().slice(0,10); }
 
 // ===== TOAST =====
 function toast(msg, type='ok') {
   const el = document.getElementById('toast');
   el.textContent = msg; el.className = 'toast show ' + type;
-  setTimeout(()=>el.classList.remove('show'), 3000);
+  setTimeout(()=>el.classList.remove('show'), 3500);
 }
 
 // ===== INIT =====
